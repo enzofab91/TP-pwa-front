@@ -14,7 +14,7 @@ import Registro from './Registro';
 ReactDOM.render(<BrowserRouter>
     <div>
         <div>
-        <li><Link to={'/home'}>Home</Link></li>
+            <li><Link to={'/home'}>Home</Link></li>
             <li><Link to={'/catalogoproductos'}>Productos</Link></li>
             <li><Link to={'/login'}>Iniciar Sesi&oacute;n</Link></li>
             <li><Link to={'/registro'}>Registro</Link></li>
