@@ -15,6 +15,22 @@ class Login extends React.Component {
         })
     };
 
+    login() {
+        fetch('http://localhost:3000/autentication/loginUsuario', {
+            method: 'POST',
+            headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json'
+            }
+            ,
+            body: JSON.stringify(this.state)
+        }).then(res => res.json())
+        .then(result => { 
+            console.log(result); 
+            localStorage.setItem("token", result["data"].token)
+        }, error => { console.log(error)})
+    }
+
     render() {
         return (
             <div className="App">
@@ -27,7 +43,7 @@ class Login extends React.Component {
                         <label>Contraseña</label>
                         <input type="password" name="password" value={this.state.password} onChange={this.handleChange.bind(this)} ></input>
                     </div>
-                    <button type="submit">Confirmar</button>
+                    <input type="button" value="Log in" onClick={this.login.bind(this)}/>
                 </form>
             </div>
         )
