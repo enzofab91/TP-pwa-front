@@ -19,7 +19,7 @@ class Registro extends React.Component {
     };
 
     registrar() {
-        if (this.state.password != this.state.password2) {
+        if (this.state.password !== this.state.password2) {
             alert("error")
             return;
         }
