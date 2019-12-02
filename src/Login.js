@@ -34,17 +34,34 @@ class Login extends React.Component {
     render() {
         return (
             <div className="App">
-                <form>
-                    <div>
-                        <label>Correo electr&oacute;nico</label>
-                        <input type="text" name="email" value={this.state.email} onChange={this.handleChange.bind(this)} ></input>
+            <div className="container">
+                <div className="row">
+                    <div className="col-md-6">
+                        <div className="login-form">
+                            <h3 className="billing-title text-center">Login</h3>
+                            <p className="text-center mt-80 mb-40">¡Bienvenido! Inicie sesión en su cuenta</p>
+                            <form action="#">
+                                <input type="text" placeholder="Correo electrónico" type="text" name="email" value={this.state.email} onChange={this.handleChange.bind(this)} className="common-input mt-20"></input>
+                                <input type="password" name="Contraseña" value={this.state.password} onChange={this.handleChange.bind(this)} className="common-input mt-20"></input>
+                                <button className="view-btn color-2 mt-20 w-100"><span>Ingresar</span></button>
+                                <div className="mt-20 d-flex align-items-center justify-content-between">
+                                <div className="d-flex align-items-center">
+                                    <input type="checkbox" className="pixel-checkbox" id="login-1"></input><label>Recuérdame</label></div>
+                                    <a href="#">¿Olvidaste tu contraseña?</a>
+                                </div>
+                            </form>
+                        </div>
                     </div>
-                    <div>
-                        <label>Contraseña</label>
-                        <input type="password" name="password" value={this.state.password} onChange={this.handleChange.bind(this)} ></input>
+
+                    <div class="col-md-6">
+                        <div class="register-form">
+                        <h3 class="billing-title text-center">Registro</h3>
+                        <p class="text-center mt-40 mb-30">Si aún no está registrado, ingrese sus datos en el formulario que se le presentará a continuación </p>
+                        <button class="view-btn color-2 mt-20 w-100"><span>Registrarse</span></button>
+                        </div>
                     </div>
-                    <input type="button" value="Log in" onClick={this.login.bind(this)}/>
-                </form>
+                </div>
+            </div>
             </div>
         )
     };

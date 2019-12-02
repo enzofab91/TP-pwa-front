@@ -8,34 +8,39 @@ import {Link, BrowserRouter} from 'react-router-dom';
 import Home from './Home';
 import CatalogoProductos from './CatalogoProductos';
 import DetalleProducto from './DetalleProducto';
+import NuestraHistoria from './NuestraHistoria';
+import QuienesSomos from './QuienesSomos';
 import Login from './Login';
 import Registro from './Registro';
 import avatar_image from "./assets/images/avatar.png";
 
 ReactDOM.render(<BrowserRouter>
     <div>
-        <div>
-            <li><Link to={'/home'}>Home</Link></li>
-            <li><Link to={'/catalogoproductos'}>Productos</Link></li>
-            <li><Link to={'/login'}>Iniciar Sesi&oacute;n</Link></li>
-            <li><Link to={'/registro'}>Registro</Link></li>
-        </div>
         <nav className="navbar navbar-expand-lg navbar-light bg-light">
-  <Link to={"/"} className="navbar-brand" >TITLE</Link>
-  <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+  <Link to={"/"} className="navbar-brand" >PWA Express</Link>
+  {/*<button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
     <span className="navbar-toggler-icon"></span>
-  </button>
+</button>*/}
   <div className="collapse navbar-collapse" id="navbarNav">
     <ul className="navbar-nav">
       <li className="nav-item" >
       <Link to={"/catalogoproductos"} className="nav-link" >Productos</Link>
       </li>
-      <li className="nav-item d-block d-sm-none" >
+      <li className="nav-item" >
           <Link to={"/login"} className="nav-link" >Iniciar Sesi&oacute;n</Link>
+      </li>
+      <li className="nav-item" >
+          <Link to={"/catalogoproductos"} className="nav-link" >Productos</Link>
+      </li>
+      <li className="nav-item" >
+          <Link to={"/quienessomos"} className="nav-link" >Quienes somos</Link>
+      </li>
+      <li className="nav-item" >
+          <Link to={"/nuestrahistoria"} className="nav-link" >Nuestra historia</Link>
       </li>
     </ul>
   </div>
-  <div className="collapse navbar-collapse"> 
+  {/*<div className="collapse navbar-collapse"> 
     <ul className="navbar-nav ml-auto nav-flex-icons">
      <li className="nav-item avatar dropdown">
         <a className="nav-link dropdown-toggle" id="navbarDropdownMenuLink-55" data-toggle="dropdown"
@@ -50,13 +55,15 @@ ReactDOM.render(<BrowserRouter>
         </div>
       </li>
     </ul>
-  </div>
+  </div>*/}
 </nav>
         <Route path="/" exact component={Home}></Route>
         <Route path="/catalogoproductos" exact component={CatalogoProductos}></Route>
         <Route path="/detalleproducto" exact component={DetalleProducto}></Route>
         <Route path="/login" exact component={Login}></Route>
         <Route path="/registro" exact component={Registro}></Route>
+        <Route path="/nuestrahistoria" exact component={NuestraHistoria}></Route>
+        <Route path="/quienessomos" exact component={QuienesSomos}></Route>
     </div>
     </BrowserRouter>, document.getElementById('root'));
 
