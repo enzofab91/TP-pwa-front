@@ -1,4 +1,7 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
+import {Route} from 'react-router';
+import Registro from './Registro';
 
 class Login extends React.Component {
     constructor(props) {
@@ -26,7 +29,7 @@ class Login extends React.Component {
             body: JSON.stringify(this.state)
         }).then(res => res.json())
         .then(result => { 
-            console.log(result); 
+            console.log(result);
             localStorage.setItem("token", result["data"].token)
         }, error => { console.log(error)})
     }
@@ -40,24 +43,24 @@ class Login extends React.Component {
                         <div className="login-form">
                             <h3 className="billing-title text-center">Login</h3>
                             <p className="text-center mt-80 mb-40">¡Bienvenido! Inicie sesión en su cuenta</p>
-                            <form action="#">
+                            <form>
                                 <input type="text" placeholder="Correo electrónico" type="text" name="email" value={this.state.email} onChange={this.handleChange.bind(this)} className="common-input mt-20"></input>
-                                <input type="password" name="Contraseña" value={this.state.password} onChange={this.handleChange.bind(this)} className="common-input mt-20"></input>
-                                <button className="view-btn color-2 mt-20 w-100"><span>Ingresar</span></button>
+                                <input type="password" name="password" value={this.state.password} onChange={this.handleChange.bind(this)} className="common-input mt-20"></input>
+                                <button className="view-btn color-2 mt-20 w-100" onClick={this.login.bind(this)}><span>Ingresar</span></button>
                                 <div className="mt-20 d-flex align-items-center justify-content-between">
                                 <div className="d-flex align-items-center">
                                     <input type="checkbox" className="pixel-checkbox" id="login-1"></input><label>Recuérdame</label></div>
-                                    <a href="#">¿Olvidaste tu contraseña?</a>
+                                    <a>¿Olvidaste tu contraseña?</a>
                                 </div>
                             </form>
                         </div>
                     </div>
 
-                    <div class="col-md-6">
-                        <div class="register-form">
-                        <h3 class="billing-title text-center">Registro</h3>
-                        <p class="text-center mt-40 mb-30">Si aún no está registrado, ingrese sus datos en el formulario que se le presentará a continuación </p>
-                        <button class="view-btn color-2 mt-20 w-100"><span>Registrarse</span></button>
+                    <div className="col-md-6">
+                        <div className="register-form">
+                        <h3 className="billing-title text-center">Registro</h3>
+                        <p className="text-center mt-40 mb-30">Si aún no está registrado, ingrese sus datos en el formulario que se le presentará a continuación </p>
+                        <Link to={"/registro"}><button className="view-btn color-2 mt-20 w-100"><span>Registrarse</span></button></Link>
                         </div>
                     </div>
                 </div>

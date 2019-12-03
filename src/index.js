@@ -13,6 +13,7 @@ import QuienesSomos from './QuienesSomos';
 import Login from './Login';
 import Registro from './Registro';
 import avatar_image from "./assets/images/avatar.png";
+import Perfil from './Perfil';
 
 ReactDOM.render(<BrowserRouter>
     <div>
@@ -30,13 +31,13 @@ ReactDOM.render(<BrowserRouter>
           <Link to={"/login"} className="nav-link" >Iniciar Sesi&oacute;n</Link>
       </li>
       <li className="nav-item" >
-          <Link to={"/catalogoproductos"} className="nav-link" >Productos</Link>
-      </li>
-      <li className="nav-item" >
           <Link to={"/quienessomos"} className="nav-link" >Quienes somos</Link>
       </li>
       <li className="nav-item" >
           <Link to={"/nuestrahistoria"} className="nav-link" >Nuestra historia</Link>
+      </li>
+      <li className="nav-item" >
+          <Link to={"/perfil"} className="nav-link" >Perfil</Link>
       </li>
     </ul>
   </div>
@@ -64,6 +65,7 @@ ReactDOM.render(<BrowserRouter>
         <Route path="/registro" exact component={Registro}></Route>
         <Route path="/nuestrahistoria" exact component={NuestraHistoria}></Route>
         <Route path="/quienessomos" exact component={QuienesSomos}></Route>
+        <Route path="/perfil" exact component={Perfil}></Route>
     </div>
     </BrowserRouter>, document.getElementById('root'));
 
