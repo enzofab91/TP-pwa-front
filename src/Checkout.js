@@ -58,7 +58,7 @@ class Checkout extends React.Component {
             fecha: new Date(),
             cantidad: this.state.cantidad,
             forma_pago: this.state.forma_pago,
-            producto: this.state.full_prod
+            producto: this.state.prod_id
         }
         fetch('http://localhost:3000/compras/', {
             method: 'POST',
