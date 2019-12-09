@@ -1,7 +1,5 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
-import {Route} from 'react-router';
-import Registro from './Registro';
 
 class Login extends React.Component {
     constructor(props) {
@@ -31,6 +29,8 @@ class Login extends React.Component {
         .then(result => { 
             console.log(result);
             localStorage.setItem("token", result["data"].token)
+            
+            console.log("params = " + this.props.testvalue)
         }, error => { console.log(error)})
     }
 
@@ -43,7 +43,6 @@ class Login extends React.Component {
                         <div className="login-form">
                             <h3 className="billing-title text-center">Login</h3>
                             <p className="text-center mt-80 mb-40">¡Bienvenido! Inicie sesión en su cuenta</p>
-                            <form>
                                 <input type="text" placeholder="Correo electrónico" type="text" name="email" value={this.state.email} onChange={this.handleChange.bind(this)} className="common-input mt-20"></input>
                                 <input type="password" name="password" value={this.state.password} onChange={this.handleChange.bind(this)} className="common-input mt-20"></input>
                                 <button className="view-btn color-2 mt-20 w-100" onClick={this.login.bind(this)}><span>Ingresar</span></button>
@@ -52,7 +51,6 @@ class Login extends React.Component {
                                     <input type="checkbox" className="pixel-checkbox" id="login-1"></input><label>Recuérdame</label></div>
                                     <a>¿Olvidaste tu contraseña?</a>
                                 </div>
-                            </form>
                         </div>
                     </div>
 

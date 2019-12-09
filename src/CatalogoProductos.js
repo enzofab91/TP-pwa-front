@@ -1,5 +1,6 @@
 import React from 'react';
 import DetalleProducto from './DetalleProducto';
+import {Link} from 'react-router-dom';
 
 class CatalogoProductos extends React.Component {
     constructor(props){
@@ -40,6 +41,7 @@ class CatalogoProductos extends React.Component {
             <td>{p.categoria != null ? p.categoria.nombre : ""}</td>
             <td><img src="p.imagenes[0]"/></td>
             <td>{p.denominacion}</td>
+            <td><button type="button" className="btn btn-sm btn-outline-secondary"><Link to={"/detalleproducto/" + p.id}>Ver</Link></button></td>
 
         </tr>)
       return (
@@ -56,6 +58,7 @@ class CatalogoProductos extends React.Component {
                     <th scope="col">Categoria</th>
                     <th scope="col">Im&aacute;genes</th>
                     <th scope="col">Destacado</th>
+                    <th scope="col"></th>
                 </tr>
             </thead>
             <tbody>
