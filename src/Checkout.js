@@ -27,7 +27,8 @@ class Checkout extends React.Component {
             method: 'GET',
             headers: {
                 Accept: 'application/json',
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'x-access-token': localStorage.getItem("token")
             }
         }).then(res => res.json())
         .then(result => {
@@ -50,10 +51,6 @@ class Checkout extends React.Component {
     }
 
     comprar() {
-        var prd = {
-
-        };
-
         var compra = {
             fecha: new Date(),
             cantidad: this.state.cantidad,
@@ -70,9 +67,8 @@ class Checkout extends React.Component {
             body: JSON.stringify(compra)
         }).then(res => res.json())
         .then(result => {
-            console.log("comprA!!");
             console.log(result);
-            //this.props.history.push('/order/' + result.data._id);
+            this.props.history.push('/order/' + result.data._id);
         }, error => { console.log("ERROR!!!");console.log(error)})
     }
 
@@ -89,7 +85,7 @@ class Checkout extends React.Component {
             <br/>
             <h3>{this.state.denominacion}</h3>
             <p>{this.state.descripcion}</p>
-            <h2>{this.state.precio}</h2>
+            <h2>$ {this.state.precio}</h2>
             Cantidad <h5>{this.state.cantidad}</h5>
             <br/><br/>
             <p>Por favor, seleccione el método de pago</p>

@@ -7,6 +7,7 @@ class Detalleproducto extends React.Component {
         this.state = {
             prod_id: '',
             cat_id: '',
+            categoria: '',
             destacado: false,
             descripcion: '',
             denominacion: '',
@@ -15,7 +16,8 @@ class Detalleproducto extends React.Component {
             precio_oferta: 0,
             sku: '',
             stock: 0,
-            cantidad: 0
+            cantidad: 0,
+            canBuy: false
         }
     };
 
@@ -38,7 +40,8 @@ class Detalleproducto extends React.Component {
                 precio: result.data.precio,
                 precio_oferta: result.data.precioOferta,
                 sku: result.data.sku,
-                stock: result.data.stock
+                stock: result.data.stock,
+                categoria: result.data.categoria
             })
         }, error => { console.log(error)})
 
@@ -49,31 +52,35 @@ class Detalleproducto extends React.Component {
             [e.target.name]: e.target.value
         })
     };
+    
+    handleBuy(e) {
+        if (!this.state.cantidad > 0)
+            e.preventDefault();
+    };
 
     render() {
         let prod = this.props.prod
         let imagenes
-        let comprar
+        //let comprar
         if (prod) {
-            imagenes = prod.imagenes.map(img => <img src={img} />)
-            comprar = <button>Comprar</button>
+            imagenes = this.prod.imagenes.map(img => <img src={img} />)
         } else prod = {}
         return (
-            <div className="App" style={{background: "lightblue"}}>
+            <div className="App">
                     <div>
-                        <p>{prod.sku}</p>
-                        <p>{prod.denominacion}</p>
-                        <p>{prod.descripcion}</p>
-                        <p>$ {prod.precio}</p>
-                        <p>{prod.precioOferta}</p>
-                        <p>{prod.stock}</p>
-                        <p>{prod.categoria != null ? prod.categoria.nombre : ""}</p>
+                        <p>{this.state.sku}</p>
+                        <p>{this.state.denominacion}</p>
+                        <p>{this.state.descripcion}</p>
+                        <p>$ {this.state.precio}</p>
+                        <p>{this.state.precioOferta}</p>
+                        <p>{this.state.stock}</p>
+                        <p>{this.state.categoria != null ? this.state.categoria.nombre : ""}</p>
                         <p>{imagenes}</p>
-                        <p>{prod.denominacion}</p>
+                        <p>{this.state.denominacion}</p>
                         <p>Cantidad: <input type="number" name="cantidad" value={this.state.cantidad} onChange={this.handleChange.bind(this)} className="small"></input></p>
-                        <button type="button" className="btn btn-sm btn-outline-secondary"><Link to={"/checkout/" + this.state.prod_id + "?cant=" + this.state.cantidad}>Comprar</Link></button>
+                        <button type="button" className="btn btn-sm btn-outline-secondary"><Link to={"/checkout/" + this.state.prod_id + "?cant=" + this.state.cantidad} onClick={this.handleBuy.bind(this)}>Comprar</Link></button>
                     </div>
-                    {comprar}
+                    {/*comprar*/}
             </div>
         )
     };
