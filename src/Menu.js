@@ -20,6 +20,10 @@ class Menu extends React.Component {
         }
     };
     
+    componentDidMount(){
+        this.changeLoginState();
+    };
+    
     changeLoginState(){
         console.log("change login state!")
         if (localStorage.getItem("token")){
@@ -32,6 +36,11 @@ class Menu extends React.Component {
             })
         }
     };
+    
+    logout(){
+        localStorage.removeItem("token");
+        this.props.history.push('/');
+    };
 
     render() {
         let html_li;
@@ -39,14 +48,18 @@ class Menu extends React.Component {
         if (this.state.isLogged) {
             html_li = <li className="nav-item" >
             <Link to={"/perfil"} className="nav-link" >Perfil</Link>
+            </li> + 
+            <li className="nav-item" >
+                <button onClick={this.logout.bind(this)} className="nav-link" >Cerrar Sesión</button>
             </li>
         } else {
             html_li = <li className="nav-item" >
-            <Link to={"/login"} data={this.changeLoginState.bind(this)} className="nav-link" >Iniciar Sesi&oacute;n</Link>
+            <Link to={"/login"}  className="nav-link" >Iniciar Sesi&oacute;n</Link>
             </li>
         }
       return (
-        <BrowserRouter>
+      
+<BrowserRouter>  
     <div>
         <nav className="navbar navbar-expand-lg navbar-light bg-light">
   <Link to={"/"} className="navbar-brand" >PWA Express</Link>
@@ -68,19 +81,21 @@ class Menu extends React.Component {
     </ul>
   </div>
 </nav>
+</div>
         <Route path="/" exact component={Home}></Route>
         <Route path="/catalogoproductos" exact component={CatalogoProductos}></Route>
         <Route path="/detalleproducto/:id" exact component={DetalleProducto}></Route>
-        <Route path="/login" exact component={Login}></Route>
+        <Route path="/login"  exact component={()=><Login data={this.changeLoginState.bind(this)}/>}></Route>
         <Route path="/registro" exact component={Registro}></Route>
         <Route path="/nuestrahistoria" exact component={NuestraHistoria}></Route>
         <Route path="/quienessomos" exact component={QuienesSomos}></Route>
         <Route path="/perfil" exact component={Perfil}></Route>
         <Route path="/checkout/:id" exact component={Checkout}></Route>
         <Route path="/order/:id" exact component={Order}></Route>
-    </div>
+    
     </BrowserRouter>
     )};
+    
 }
 
 export default Menu;

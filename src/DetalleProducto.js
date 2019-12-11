@@ -59,12 +59,20 @@ class Detalleproducto extends React.Component {
     };
 
     render() {
-        let prod = this.props.prod
-        let imagenes
+        let prod = this.props.prod;
+        let imagenes, buttonComprar;
+
         //let comprar
         if (prod) {
             imagenes = this.prod.imagenes.map(img => <img src={img} />)
         } else prod = {}
+
+        if (localStorage.getItem("token") === null){
+            localStorage.setItem("orderUrl", "/checkout/" + this.state.prod_id + "?cant=" + this.state.cantidad)
+            buttonComprar = <button type="button" className="btn btn-sm btn-outline-secondary"><Link to={"/login"} onClick={this.handleBuy.bind(this)}>Comprar</Link></button>
+        } else {
+            buttonComprar = <button type="button" className="btn btn-sm btn-outline-secondary"><Link to={"/checkout/" + this.state.prod_id + "?cant=" + this.state.cantidad} onClick={this.handleBuy.bind(this)}>Comprar</Link></button>
+        }
         return (
             <div className="App">
                     <div>
@@ -78,7 +86,7 @@ class Detalleproducto extends React.Component {
                         <p>{imagenes}</p>
                         <p>{this.state.denominacion}</p>
                         <p>Cantidad: <input type="number" name="cantidad" value={this.state.cantidad} onChange={this.handleChange.bind(this)} className="small"></input></p>
-                        <button type="button" className="btn btn-sm btn-outline-secondary"><Link to={"/checkout/" + this.state.prod_id + "?cant=" + this.state.cantidad} onClick={this.handleBuy.bind(this)}>Comprar</Link></button>
+                        {buttonComprar}
                     </div>
                     {/*comprar*/}
             </div>

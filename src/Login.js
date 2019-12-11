@@ -8,6 +8,7 @@ class Login extends React.Component {
             email: '',
             password: ''
         }
+        console.log(this.props.data);
     };
 
     handleChange(e) {
@@ -27,10 +28,16 @@ class Login extends React.Component {
             body: JSON.stringify(this.state)
         }).then(res => res.json())
         .then(result => { 
-            console.log(result);
             localStorage.setItem("token", result["data"].token)
+            this.props.data();
+            var urlToRedirect = localStorage.getItem("orderUrl");
             
-            console.log("params = " + this.props.testvalue)
+            /*if (urlToRedirect === null){
+                this.props.history.push('/');
+            } else {
+                localStorage.removeItem("orderUrl");
+                this.props.history.push(urlToRedirect);
+            }*/
         }, error => { console.log(error)})
     }
 
