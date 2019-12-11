@@ -65,7 +65,7 @@ class CatalogoProductos extends React.Component {
                 {productos}
             </tbody>
         </table>
-        <DetalleProducto prod={this.state.selected}></DetalleProducto>
+        
         </div>
     )};
 

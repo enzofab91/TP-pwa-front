@@ -17,18 +17,18 @@ class Compras extends React.Component {
                 'x-access-token': localStorage.getItem("token")
             }
         }).then(res => res.json())
-        .then(result => { 
+        .then(result => {
+            console.log("compraaaas");
             console.log(result);
-            /*this.setState({
-                nombre: result.data.nombre,
-                apellido: result.data.apellido,
-                email: result.data.email
-            })*/
+            this.setState({
+                compras: result.data
+            })
         }, error => { console.log(error)})
     }
 
     render() {
-        const compras = this.state.compras.map(d => <li>{d.denominacion}</li>)
+        const compras = this.state.compras.map(d => 
+        <li>{d.fecha}</li>)
       return (
         <div className="App">
             <h2>compras</h2>

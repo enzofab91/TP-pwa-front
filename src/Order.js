@@ -79,7 +79,7 @@ class Order extends React.Component {
                     </div>
 
                     <div className="col-md-6">
-                    <p>Fecha: {this.state.fecha.toString()}</p>
+                    <p>Fecha: {this.state.fecha.toString}</p>
                     <p>Cantidad: {this.state.cantidad}</p>
                     <p>Total: ${this.state.aPagar}</p>
                     <p>Estado: {this.state.estadoPago}</p>
