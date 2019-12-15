@@ -61,11 +61,20 @@ class Detalleproducto extends React.Component {
     render() {
         let prod = this.props.prod;
         let imagenes, buttonComprar;
+        let oferta, precio;
 
         //let comprar
         if (prod) {
             imagenes = this.prod.imagenes.map(img => <img src={img} alt=""/>)
         } else prod = {}
+
+        if (this.state.precio_oferta > 0){
+            precio = <small className="text-muted tachado">$ {this.state.precio}</small>
+            oferta = <small className="text-muted">En oferta $ {this.state.precio_oferta}</small>
+        } else {
+            oferta = ""
+            precio = <small className="text-muted">$ {this.state.precio}</small>
+        }
 
         if (localStorage.getItem("token") === null){
             localStorage.setItem("orderUrl", "/checkout/" + this.state.prod_id + "?cant=" + this.state.cantidad)
@@ -79,9 +88,9 @@ class Detalleproducto extends React.Component {
                         <p>{this.state.sku}</p>
                         <p>{this.state.denominacion}</p>
                         <p>{this.state.descripcion}</p>
-                        <p>$ {this.state.precio}</p>
+                        <p>{precio}</p>
+                        <p>{oferta}</p>
                         <p>{this.state.precioOferta}</p>
-                        <p>{this.state.stock}</p>
                         <p>{this.state.categoria != null ? this.state.categoria.nombre : ""}</p>
                         <p>{imagenes}</p>
                         <p>{this.state.denominacion}</p>

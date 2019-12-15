@@ -79,13 +79,24 @@ class Checkout extends React.Component {
     };
 
     render() {
+        let precio, oferta;
+        
+        if (this.state.precio_oferta > 0){
+            precio = <small className="text-muted tachado">$ {this.state.precio}</small>
+            oferta = <small className="text-muted">En oferta $ {this.state.precio_oferta}</small>
+        } else {
+            oferta = ""
+            precio = <small className="text-muted">$ {this.state.precio}</small>
+        }
+
       return (
         <div className="App">
             <h3>Usted está por comprar el siguiente producto:</h3>
             <br/>
             <h3>{this.state.denominacion}</h3>
             <p>{this.state.descripcion}</p>
-            <h2>$ {this.state.precio}</h2>
+            <h2> {precio}</h2>
+            <h2> {oferta}</h2>
             Cantidad <h5>{this.state.cantidad}</h5>
             <br/><br/>
             <p>Por favor, seleccione el método de pago</p>

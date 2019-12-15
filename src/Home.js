@@ -1,5 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
+import './App.css';
 
 class Home extends React.Component {
     constructor(props){
@@ -27,13 +28,20 @@ class Home extends React.Component {
 
     render() {
         const destacados = this.state.destacados;
-
+        let oferta, precio; 
         return (
           <div className="App">
               <div className="container">
               <h3 >Productos destacados</h3>
               <div className="row">
                 {destacados.map(d => {
+                    if (d.precioOferta !== null && d.precioOferta > 0){
+                        precio = <small className="text-muted tachado">$ {d.precio}</small>
+                        oferta = <small className="text-muted">En oferta $ {d.precioOferta}</small>
+                    } else {
+                        oferta = ""
+                        precio = <small className="text-muted">$ {d.precio}</small>
+                    }
                 return (
                     <div className="col-md-4">
                         <div className="card mb-4 shadow-sm">
@@ -46,7 +54,8 @@ class Home extends React.Component {
                                     <div className="btn-group">
                                     <button type="button" className="btn btn-sm btn-outline-secondary"><Link to={"/detalleproducto/" + d.id}>Ver</Link></button>
                                     </div>
-                                    <small className="text-muted">$ {d.precio}</small>
+                                    {precio}
+                                    {oferta}
                                 </div>
                                 </div>
                         </div>
