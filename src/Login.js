@@ -8,7 +8,6 @@ class Login extends React.Component {
             email: '',
             password: ''
         }
-        console.log(this.props.data);
     };
 
     handleChange(e) {
@@ -29,15 +28,15 @@ class Login extends React.Component {
         }).then(res => res.json())
         .then(result => { 
             localStorage.setItem("token", result["data"].token)
-            this.props.data();
+            console.log(this.props.historia);
             var urlToRedirect = localStorage.getItem("orderUrl");
-            
-            /*if (urlToRedirect === null){
-                this.props.history.push('/');
+            console.log("redirect a = " + urlToRedirect);
+            if (urlToRedirect === null){
+                window.location.href = '/';
             } else {
                 localStorage.removeItem("orderUrl");
-                this.props.history.push(urlToRedirect);
-            }*/
+                window.location.href = urlToRedirect;
+            }
         }, error => { console.log(error)})
     }
 
@@ -55,7 +54,7 @@ class Login extends React.Component {
                                 <button className="view-btn color-2 mt-20 w-100" onClick={this.login.bind(this)}><span>Ingresar</span></button>
                                 <div className="mt-20 d-flex align-items-center justify-content-between">
                                 <div className="d-flex align-items-center">
-                                    <input type="checkbox" className="pixel-checkbox" id="login-1"></input><label>Recuérdame</label></div>
+                                    {/*<input type="checkbox" className="pixel-checkbox" id="login-1"></input><label>Recuérdame</label>*/}</div>
                                     <a>¿Olvidaste tu contraseña?</a>
                                 </div>
                         </div>

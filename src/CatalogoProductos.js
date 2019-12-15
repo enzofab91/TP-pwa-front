@@ -1,5 +1,4 @@
 import React from 'react';
-import DetalleProducto from './DetalleProducto';
 import {Link} from 'react-router-dom';
 
 class CatalogoProductos extends React.Component {
@@ -39,7 +38,7 @@ class CatalogoProductos extends React.Component {
             <td>{p.precioOferta}</td>
             <td>{p.stock}</td>
             <td>{p.categoria != null ? p.categoria.nombre : ""}</td>
-            <td><img src="p.imagenes[0]"/></td>
+            <td><img src="p.imagenes[0]" alt=""/></td>
             <td>{p.denominacion}</td>
             <td><button type="button" className="btn btn-sm btn-outline-secondary"><Link to={"/detalleproducto/" + p.id}>Ver</Link></button></td>
 

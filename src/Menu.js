@@ -25,7 +25,6 @@ class Menu extends React.Component {
     };
     
     changeLoginState(){
-        console.log("change login state!")
         if (localStorage.getItem("token")){
             this.setState({
                 isLogged: true
@@ -39,18 +38,20 @@ class Menu extends React.Component {
     
     logout(){
         localStorage.removeItem("token");
-        this.props.history.push('/');
+        window.location.href = "/";
     };
-
+    
     render() {
-        let html_li;
+        let html_li, html_logout;
+
         //console.log("is logged = " + this.state.isLogged)
         if (this.state.isLogged) {
             html_li = <li className="nav-item" >
-            <Link to={"/perfil"} className="nav-link" >Perfil</Link>
-            </li> + 
-            <li className="nav-item" >
-                <button onClick={this.logout.bind(this)} className="nav-link" >Cerrar Sesión</button>
+            <Link to={"/perfil"}  className="nav-link" >Perfil</Link>
+            </li>
+
+            html_logout = <li className="nav-item" >
+            <a className="nav-link" onClick={this.logout.bind(this)}>Cerrar Sesión</a>
             </li>
         } else {
             html_li = <li className="nav-item" >
@@ -78,6 +79,7 @@ class Menu extends React.Component {
           <Link to={"/nuestrahistoria"} className="nav-link" >Nuestra historia</Link>
       </li>
       {html_li}
+      {html_logout}
     </ul>
   </div>
 </nav>

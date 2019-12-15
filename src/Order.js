@@ -1,5 +1,4 @@
 import React from 'react';
-import queryString from 'query-string'
 
 class Order extends React.Component {
     constructor(props){
@@ -44,7 +43,6 @@ class Order extends React.Component {
                 producto: {
                     denominacion: result.data.producto.denominacion,
                     descripcion: result.data.producto.descripcion,
-                    denominacion: result.data.producto.denominacion,
                     imagenes: result.data.producto.imagenes,
                     precio: result.data.producto.precio,
                     precio_oferta: result.data.producto.precioOferta,
@@ -59,12 +57,12 @@ class Order extends React.Component {
 
     render() {
         let imagenes;
-        imagenes = this.state.producto.imagenes.map(img => <img src={img} />)
+        imagenes = this.state.producto.imagenes.map(img => <img src={img}  alt=""/>)
       return (
         <div className="App">
             <div className="container">
+            <h3>Su compra:</h3><br></br>
                 <div className="row">
-                    <h3>¡Felicitaciones! Su compra se ha realizado correctamente</h3>
                     <div className="col-md-6">
                         <h5>Producto</h5>
                         <p>{this.state.producto.sku}</p>
@@ -72,14 +70,12 @@ class Order extends React.Component {
                         <p>{this.state.producto.descripcion}</p>
                         <p>$ {this.state.producto.precio}</p>
                         <p>{this.state.producto.precioOferta}</p>
-                        <p>{this.state.producto.stock}</p>
                         <p>{this.state.producto.categoria != null ? this.state.producto.categoria.nombre : ""}</p>
                         <p>{imagenes}</p>
-                        <p>{this.state.producto.denominacion}</p>
                     </div>
 
                     <div className="col-md-6">
-                    <p>Fecha: {this.state.fecha.toString}</p>
+                    <p>Fecha: {this.state.fecha.toString()}</p>
                     <p>Cantidad: {this.state.cantidad}</p>
                     <p>Total: ${this.state.aPagar}</p>
                     <p>Estado: {this.state.estadoPago}</p>

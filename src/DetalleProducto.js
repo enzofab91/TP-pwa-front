@@ -64,7 +64,7 @@ class Detalleproducto extends React.Component {
 
         //let comprar
         if (prod) {
-            imagenes = this.prod.imagenes.map(img => <img src={img} />)
+            imagenes = this.prod.imagenes.map(img => <img src={img} alt=""/>)
         } else prod = {}
 
         if (localStorage.getItem("token") === null){

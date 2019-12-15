@@ -33,6 +33,8 @@ class Perfil extends React.Component {
     render() {
       return (
         <div className="App">
+            <h5>Sus datos personales:</h5>
+            <div className="container">
             <div>
                 <label>Nombre: </label> {this.state.nombre}
             </div>
@@ -41,7 +43,7 @@ class Perfil extends React.Component {
             </div>
             <div>
                 <label>Correo electrónico: </label> {this.state.email}
-            </div>
+            </div></div>
             <Compras />
         </div>
     )};
