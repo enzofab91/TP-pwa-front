@@ -18,7 +18,6 @@ class NuestraHistoria extends React.Component {
             }
         }).then(res => res.json())
         .then(result => { 
-            console.log(result);
             this.setState({
                 titulo: result.data.titulo,
                 descripcion: result.data.descripcion,
@@ -29,8 +28,14 @@ class NuestraHistoria extends React.Component {
     render() {
       return (
         <div className="App">
-            <h3>{this.state.titulo}</h3>
-            <p>{this.state.descripcion}</p>
+            <div classNamer="container">
+                <div className="row">
+                    <div class="col-12 text-center">
+                        <h3>{this.state.titulo}</h3>
+                        <p>{this.state.descripcion}</p>
+                    </div>
+                </div>
+            </div>
         </div>
     )};
 }

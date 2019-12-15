@@ -19,7 +19,6 @@ class QuienesSomos extends React.Component {
             }
         }).then(res => res.json())
         .then(result => { 
-            console.log(result);
             this.setState({
                 titulo: result.data.titulo,
                 descripcion: result.data.descripcion,
@@ -31,9 +30,15 @@ class QuienesSomos extends React.Component {
     render() {
       return (
         <div className="App">
-            <h3>{this.state.titulo}</h3>
-            <p>{this.state.descripcion}</p>
-            <p>{this.state.contacto}</p>
+            <div classNamer="container">
+                <div className="row">
+                    <div class="col-12 text-center">
+                        <div class="form-group"><h3>{this.state.titulo}</h3></div>
+                        <div class="form-group"><p>{this.state.descripcion}</p></div>
+                        <div class="form-group"><p>Contacto: {this.state.contacto}</p></div>
+                    </div>
+                </div>
+            </div>
         </div>
     )};
 }
