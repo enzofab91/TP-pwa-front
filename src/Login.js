@@ -27,15 +27,17 @@ class Login extends React.Component {
             body: JSON.stringify(this.state)
         }).then(res => res.json())
         .then(result => { 
-            localStorage.setItem("token", result["data"].token)
-            console.log(this.props.historia);
-            var urlToRedirect = localStorage.getItem("orderUrl");
-            console.log("redirect a = " + urlToRedirect);
-            if (urlToRedirect === null){
-                window.location.href = '/';
-            } else {
-                localStorage.removeItem("orderUrl");
-                window.location.href = urlToRedirect;
+            if (result["data"]){
+                localStorage.setItem("token", result["data"].token)
+                
+                var urlToRedirect = localStorage.getItem("orderUrl");
+                
+                if (urlToRedirect === null){
+                    window.location.href = '/';
+                } else {
+                    localStorage.removeItem("orderUrl");
+                    window.location.href = urlToRedirect;
+                }
             }
         }, error => { console.log(error)})
     }
@@ -55,7 +57,7 @@ class Login extends React.Component {
                                 <div className="mt-20 d-flex align-items-center justify-content-between">
                                 <div className="d-flex align-items-center">
                                     {/*<input type="checkbox" className="pixel-checkbox" id="login-1"></input><label>Recuérdame</label>*/}</div>
-                                    <a>¿Olvidaste tu contraseña?</a>
+                                    <Link to={"/recuperar-contrasenia"}><a className="view-btn color-2 mt-20 w-100"><span>¿Olvidaste tu contraseña?</span></a></Link>
                                 </div>
                         </div>
                     </div>

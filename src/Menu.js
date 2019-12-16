@@ -11,6 +11,8 @@ import Registro from './Registro';
 import Perfil from './Perfil';
 import Checkout from './Checkout';
 import Order from './Order';
+import RecuperarContrasenia from './RecuperarContrasenia';
+import NuevaContrasenia from './NuevaContrasenia';
 
 class Menu extends React.Component {
     constructor(props){
@@ -94,6 +96,8 @@ class Menu extends React.Component {
         <Route path="/perfil" exact component={Perfil}></Route>
         <Route path="/checkout/:id" exact component={Checkout}></Route>
         <Route path="/order/:id" exact component={Order}></Route>
+        <Route path="/recuperar-contrasenia" exact component={RecuperarContrasenia}></Route>
+        <Route path="/reset-password/:token" exact component={NuevaContrasenia}></Route>
     
     </BrowserRouter>
     )};

@@ -32,7 +32,7 @@ class Registro extends React.Component {
             ,
             body: JSON.stringify(this.state)
         }).then(res => res.json())
-        .then(result => { console.log(result)}, error => { console.log(error)})
+        .then(result => { window.location.href = "/"}, error => { console.log(error)})
     }
 
     render() {
