@@ -64,9 +64,10 @@ class Detalleproducto extends React.Component {
         let oferta, precio;
 
         //let comprar
-        if (prod) {
-            imagenes = this.prod.imagenes.map(img => <img src={img} alt=""/>)
-        } else prod = {}
+        if (this.state.imagenes) {
+            console.log(this.state.imagenes)
+            imagenes = this.state.imagenes.map(img => <img src={img} alt=""/>)
+        }
 
         if (this.state.precio_oferta > 0){
             precio = <small className="text-muted tachado">$ {this.state.precio}</small>
